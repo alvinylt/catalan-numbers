@@ -2,9 +2,10 @@ module CatalanNumber where
 
 -- Naive definition
 catalanNumber :: Integer -> Integer
-catalanNumber term = case term of
-  0 -> 1
-  _ -> catalanNumberAcc (term - 1) 0
+catalanNumber term
+  | term < 0  = error "catalanNumber: input must be a non-negative integer"
+  | term == 0 = 1
+  | otherwise = catalanNumberAcc (term - 1) 0
   where
     catalanNumberAcc :: Integer -> Integer -> Integer
     catalanNumberAcc num acc
